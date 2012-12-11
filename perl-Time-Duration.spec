@@ -1,20 +1,20 @@
 %define upstream_name    Time-Duration
 %define upstream_version 1.06
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 3
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	4
 
-Summary:    Rounded or exact English expression of durations
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Time/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Rounded or exact English expression of durations
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Time/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Test::Pod)
-BuildRequires: perl(Test::Pod::Coverage)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(Test::Pod)
+BuildRequires:	perl(Test::Pod::Coverage)
+BuildArch:	noarch
 
 %description
 This module provides functions for expressing durations in rounded or exact
@@ -34,24 +34,30 @@ hour and 4 minutes*.". Using duration_exact instead would return "Runtime:
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc README ChangeLog META.yml
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
 
+%changelog
+* Sun Apr 24 2011 Funda Wang <fwang@mandriva.org> 1.60.0-3mdv2011.0
++ Revision: 658268
+- rebuild
+
+* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 1.60.0-2
++ Revision: 657855
+- rebuild for updated spec-helper
+
+* Fri Dec 24 2010 Shlomi Fish <shlomif@mandriva.org> 1.60.0-1mdv2011.0
++ Revision: 624674
+- import perl-Time-Duration
 
