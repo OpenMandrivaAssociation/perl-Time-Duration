@@ -8,7 +8,7 @@ Release:	6
 Summary:	Rounded or exact English expression of durations
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}
+Url:		https://search.cpan.org/dist/%{upstream_name}
 Source0:	http://www.cpan.org/modules/by-module/Time/%{upstream_name}-%{upstream_version}.tar.gz
 
 BuildRequires:	perl-devel
