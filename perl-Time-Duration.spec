@@ -1,17 +1,17 @@
 %define upstream_name    Time-Duration
-%define upstream_version 1.06
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	6
+Version:	1.21
+Release:	1
 
 Summary:	Rounded or exact English expression of durations
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Time/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/pod/Time::Duration
+Source0:	https://www.cpan.org/modules/by-module/Time/%{upstream_name}-%{version}.tar.gz
 
 BuildRequires:	perl-devel
+BuildRequires:	perl(Test)
 BuildRequires:	perl(Test::Pod)
 BuildRequires:	perl(Test::Pod::Coverage)
 BuildArch:	noarch
@@ -31,7 +31,7 @@ hour and 4 minutes*.". Using duration_exact instead would return "Runtime:
 *1 hour, 3 minutes, and 40 seconds*".
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -44,20 +44,6 @@ perl Makefile.PL INSTALLDIRS=vendor
 %makeinstall_std
 
 %files
-%doc README ChangeLog META.yml
+%doc README META.yml
 %{_mandir}/man3/*
 %{perl_vendorlib}/*
-
-%changelog
-* Sun Apr 24 2011 Funda Wang <fwang@mandriva.org> 1.60.0-3mdv2011.0
-+ Revision: 658268
-- rebuild
-
-* Sat Apr 23 2011 Funda Wang <fwang@mandriva.org> 1.60.0-2
-+ Revision: 657855
-- rebuild for updated spec-helper
-
-* Fri Dec 24 2010 Shlomi Fish <shlomif@mandriva.org> 1.60.0-1mdv2011.0
-+ Revision: 624674
-- import perl-Time-Duration
-
