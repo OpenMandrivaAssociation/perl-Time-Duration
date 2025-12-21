@@ -10,6 +10,7 @@ Group:		Development/Perl
 Url:		https://metacpan.org/pod/Time::Duration
 Source0:	https://www.cpan.org/modules/by-module/Time/%{upstream_name}-%{version}.tar.gz
 
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:	perl(Test)
 BuildRequires:	perl(Test::Pod)
